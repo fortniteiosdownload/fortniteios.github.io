@@ -327,7 +327,7 @@
       if (isApple) {
         if (iosVersionMajor > 17 || (iosVersionMajor === 17 && iosVersionMinor >= 6)) {
           showPopup('✅ Your device is supported!');
-          installButton.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/mrlychinebroo/fartnite/refs/heads/main/Instaal.plist";
+          installButton.href = "itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/mrlychinebroo/fartnite/refs/heads/main/Installer.plist";
           buttonText.textContent = "INSTALL FORTNITE (v34.40)";
         } else {
           showPopup('❌ Sorry, your iOS version is too low. Requires iOS 17.6 or higher.');
